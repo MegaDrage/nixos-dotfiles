@@ -3,7 +3,6 @@
 {
   imports = [
     ./zsh.nix
-    ./neovim
     ./starship
     ./git.nix
     ./xdg.nix

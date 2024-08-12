@@ -10,6 +10,7 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim.url = "github:megadrage/nixvim-conf";
   };
 
   outputs = { self, nixpkgs, home-manager, ...}@inputs:
@@ -35,6 +36,7 @@
                 };
 	      }
 	    ];
+	    specialArgs = { inherit inputs; };
 	  };
 	};
    };
