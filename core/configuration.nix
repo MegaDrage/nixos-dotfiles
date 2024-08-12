@@ -130,6 +130,8 @@
      ripgrep
      telegram-desktop
      wl-clipboard
+     fd
+     lazygit
      inputs.nixvim.packages.${system}.default
    ];
 
