@@ -6,7 +6,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [       
       ./hardware-configuration.nix
       ./nvidia.nix
       ./graphics.nix
@@ -15,10 +15,6 @@
       ./docker.nix
     ];
   programs = {
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
     zsh = {
       enable = true;
     };
@@ -131,7 +127,7 @@
      zip
      unzip
      fzf
-     dunst
+     ripgrep
      telegram-desktop
      wl-clipboard
      inputs.nixvim.packages.${system}.default
