@@ -233,8 +233,8 @@
     "nixpkgs_2": {
       "locked": {
         "lastModified": 0,
-        "narHash": "sha256-G7Mf9uN9m8FimeP3eMHu/dOC4QS8QAzo0h4ZIlDHcCA=",
-        "path": "/nix/store/lb9k3821vqnmxwkc4jlzwndx38s2dch5-source",
+        "narHash": "sha256-8Aiur5lv2L8o9ErxHqS2F293MHiHCoRG8C4vCwhkeXo=",
+        "path": "/nix/store/2d55is03vs1fkfyyklqfjcfwibjgfm6f-source",
         "type": "path"
       },
       "original": {
@@ -265,11 +265,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1724259238,
-        "narHash": "sha256-DKJvnoDrbT8pQSC/7BvcFKtAFF9iYfEGcHtzrxDPDWs=",
+        "lastModified": 1724261345,
+        "narHash": "sha256-XqROu8cdE4JfDtvyv6ZZZaRtIhY8jsNNd7ktrJVj42E=",
         "owner": "megadrage",
         "repo": "nixvim-conf",
-        "rev": "1798d2e401ccd1bcb7b73947bce4a4c785ea727b",
+        "rev": "d3efae138242777c47b3522347b706ab9fcc76d1",
         "type": "github"
       },
       "original": {

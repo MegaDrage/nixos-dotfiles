@@ -124,10 +124,9 @@
     ripgrep
     telegram-desktop
     wl-clipboard
+    ranger
     fd
     lazygit
-    vifm
-    mc
     inputs.nixvim.packages.${system}.default
   ];
 
