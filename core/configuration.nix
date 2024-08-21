@@ -5,30 +5,17 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [       
-      ./hardware-configuration.nix
-      ./nvidia.nix
-      ./graphics.nix
-      ./fonts.nix
-      ./hiddify
-      ./docker.nix
-    ];
-  programs = {
-    zsh = {
-      enable = true;
-    };
-  };
-  xdg = {
-    portal = {
-      enable = true;
-    };
-  };
-  environment = {
-    variables = {
-      EDITOR = "nvim";
-    };
-  };
+  imports = [
+    ./hardware-configuration.nix
+    ./nvidia.nix
+    ./graphics.nix
+    ./fonts.nix
+    ./hiddify
+    ./docker.nix
+  ];
+  programs = { zsh = { enable = true; }; };
+  xdg = { portal = { enable = true; }; };
+  environment = { variables = { EDITOR = "nvim"; }; };
   boot = {
     kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
     kernelPackages = pkgs.linuxPackages_latest;
@@ -40,13 +27,13 @@
       };
       grub = {
         enable = true;
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
         configurationLimit = 10;
       };
       timeout = 10;
-    };  
+    };
   };
 
   nix = {
@@ -64,7 +51,7 @@
     hardwareClockInLocalTime = true;
   };
 
-  i18n = { 
+  i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "ru_RU.UTF-8";
@@ -113,27 +100,36 @@
   users.defaultUserShell = pkgs.zsh;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.megadrage = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" "docker" "video" "input" "networkmanager" "rfkill" "audio" "network" ]; 
-     packages = with pkgs; [
-	floorp       
-     ];
-   };
-   environment.systemPackages = with pkgs; [
-     eza
-     kitty
-     kitty-themes
-     fastfetch
-     zip
-     unzip
-     fzf
-     ripgrep
-     telegram-desktop
-     wl-clipboard
-     fd
-     lazygit
-     inputs.nixvim.packages.${system}.default
-   ];
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "docker"
+      "video"
+      "input"
+      "networkmanager"
+      "rfkill"
+      "audio"
+      "network"
+    ];
+    packages = with pkgs; [ floorp ];
+  };
+  environment.systemPackages = with pkgs; [
+    eza
+    kitty
+    kitty-themes
+    fastfetch
+    zip
+    unzip
+    fzf
+    ripgrep
+    telegram-desktop
+    wl-clipboard
+    fd
+    lazygit
+    vifm
+    mc
+    inputs.nixvim.packages.${system}.default
+  ];
 
   programs.direnv.enable = true;
 
@@ -184,12 +180,10 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
-  environment.etc."current-system-packages".text =
-   let
-     packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-     sortedUnique = builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
-     formatted = builtins.concatStringsSep "\n" sortedUnique;
-   in
-     formatted;
+  environment.etc."current-system-packages".text = let
+    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+    sortedUnique =
+      builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
+    formatted = builtins.concatStringsSep "\n" sortedUnique;
+  in formatted;
 }
-
