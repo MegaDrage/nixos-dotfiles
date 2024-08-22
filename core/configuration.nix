@@ -114,7 +114,6 @@
     packages = with pkgs; [ floorp ];
   };
   environment.systemPackages = with pkgs; [
-    eza
     kitty
     kitty-themes
     fastfetch
