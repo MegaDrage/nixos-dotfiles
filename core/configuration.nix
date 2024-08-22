@@ -125,7 +125,6 @@
     wl-clipboard
     ranger
     fd
-    lazygit
     inputs.nixvim.packages.${system}.default
   ];
 
