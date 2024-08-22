@@ -92,6 +92,7 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
+
   # services.pipewire = {
   #   enable = true;
   #   pulse.enable = true;
@@ -115,6 +116,18 @@
     packages = with pkgs; [ floorp ];
   };
   environment.systemPackages = with pkgs; [
+    libreoffice
+    djvulibre
+    fontforge
+    drawio
+    openscad
+    poppler_utils
+    odt2txt
+    mediainfo
+    jq
+    calibre
+    w3m
+    atool
     kitty
     kitty-themes
     fastfetch
