@@ -1,8 +1,16 @@
 { pkgs, ... }:
 
 {
-  imports =
-    [ ./zsh.nix ./eza.nix ./starship ./git.nix ./xdg.nix ./kitty ./lazygit ];
+  imports = [
+    ./zsh.nix
+    ./eza.nix
+    ./starship
+    ./git.nix
+    ./xdg.nix
+    ./kitty
+    ./lazygit
+    ./bat.nix
+  ];
   home = {
     username = "megadrage";
     homeDirectory = "/home/megadrage";
