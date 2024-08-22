@@ -13,6 +13,7 @@
     ./hiddify
     ./docker.nix
     ./shell.nix
+    ./syncthing.nix
   ];
   programs = { zsh = { enable = true; }; };
   xdg = { portal = { enable = true; }; };

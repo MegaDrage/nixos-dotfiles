@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -7,5 +7,6 @@
     username = "megadrage";
     homeDirectory = "/home/megadrage";
     stateVersion = "24.05";
+    packages = with pkgs; [ obsidian ];
   };
 }
