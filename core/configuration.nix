@@ -12,6 +12,7 @@
     ./fonts.nix
     ./hiddify
     ./docker.nix
+    ./shell.nix
   ];
   programs = { zsh = { enable = true; }; };
   xdg = { portal = { enable = true; }; };
@@ -97,7 +98,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
-  users.defaultUserShell = pkgs.zsh;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.megadrage = {
     isNormalUser = true;
