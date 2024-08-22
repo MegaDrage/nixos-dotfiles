@@ -10,6 +10,7 @@
       lt =
         "eza --tree --level=3 --color=always --group-directories-first --icons always";
       ldot = "eza -a | grep -E '^.'";
+      vim = "nvim";
     };
   };
 }
