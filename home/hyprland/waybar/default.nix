@@ -1,4 +1,5 @@
 {
+  imports = [ ./style.nix ];
   programs.waybar = {
     enable = true;
     settings = [{

@@ -1,5 +1,5 @@
 {
-  imports = [ ./settings ./swaync ./waybar ./wlogout ./hypridle ];
+  imports = [ ./settings ./swaync ./waybar ./wlogout ./hypridle ./rofi ];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;

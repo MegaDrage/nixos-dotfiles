@@ -16,6 +16,16 @@
       "SDL_VIDEODRIVER, x11"
       "MOZ_ENABLE_WAYLAND, 1"
     ];
+
+    exec-once = [
+      "polkit-agent-helper-1 &"
+      "systemctl start --user polkit-gnome-authentication-agent-1 &"
+      "killall -q waybar;sleep .5 && waybar &"
+      "killall -q swaync;sleep .5 && swaync &"
+      #"hypridle &"
+      # "nm-applet --indicator"
+    ];
+
     general = {
       "$mainMod" = "SUPER";
       gaps_in = 7;
