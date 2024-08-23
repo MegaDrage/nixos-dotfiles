@@ -140,6 +140,7 @@
     ranger
     fd
     inputs.nixvim.packages.${system}.default
+    bottles
   ];
 
   programs.direnv.enable = true;
