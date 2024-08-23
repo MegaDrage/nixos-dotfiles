@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hyprland.nix
     ./docker.nix
     ./syncthing.nix
     ./polkit.nix

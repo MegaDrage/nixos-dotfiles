@@ -12,6 +12,7 @@
     ./lazygit
     ./bat.nix
     ./zoxide.nix
+    ./hyprland
   ];
   home = {
     username = "megadrage";
