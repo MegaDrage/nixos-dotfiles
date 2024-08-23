@@ -5,34 +5,10 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./modules
-    ./hiddify
-  ];
+  imports = [ ./modules ./hiddify ];
   programs = { zsh = { enable = true; }; };
   xdg = { portal = { enable = true; }; };
   environment = { variables = { EDITOR = "nvim"; }; };
-  boot = {
-    kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
-    kernelPackages = pkgs.linuxPackages_latest;
-    extraModprobeConfig = "options nouveau modeset=0";
-    supportedFilesystems = [ "ntfs" ];
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-      grub = {
-        enable = true;
-        devices = [ "nodev" ];
-        efiSupport = true;
-        useOSProber = true;
-        configurationLimit = 10;
-      };
-      timeout = 10;
-    };
-  };
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
@@ -63,6 +39,7 @@
     };
   };
   nixpkgs.config.allowUnfree = true;
+
   services = {
     xserver = {
       enable = true;
@@ -77,9 +54,6 @@
     };
     printing.enable = true;
   };
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -94,22 +68,8 @@
   # };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.megadrage = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "docker"
-      "video"
-      "input"
-      "networkmanager"
-      "rfkill"
-      "audio"
-      "network"
-    ];
-    packages = with pkgs; [ floorp ];
-  };
+  services.libinput.enable = true;
+
   environment.systemPackages = with pkgs; [
     libreoffice
     djvulibre
@@ -135,7 +95,10 @@
     bottles
   ];
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.appimage = {
     enable = true;
@@ -160,6 +123,7 @@
   #networking.firewall.allowedUDPPorts = [ 2017 443 ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall =
@@ -169,11 +133,6 @@
     localNetworkGameTransfers.openFirewall =
       true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -193,6 +152,7 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
+  # Get running apps in file
   environment.etc."current-system-packages".text = let
     packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
     sortedUnique =

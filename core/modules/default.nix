@@ -1,6 +1,8 @@
 {
   imports = [
     ./docker.nix
+    ./user.nix
+    ./boot.nix
     ./fonts.nix
     ./graphics.nix
     ./hardware-configuration.nix
