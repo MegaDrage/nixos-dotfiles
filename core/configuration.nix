@@ -129,12 +129,10 @@
     calibre
     w3m
     atool
-    kitty
     kitty-themes
     fastfetch
     zip
     unzip
-    fzf
     ripgrep
     telegram-desktop
     wl-clipboard
