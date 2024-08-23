@@ -1,5 +1,5 @@
 {
-  import = [ ./settings ];
+  imports = [ ./settings ];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
