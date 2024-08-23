@@ -11,6 +11,7 @@
     ./kitty
     ./lazygit
     ./bat.nix
+    ./zoxide.nix
   ];
   home = {
     username = "megadrage";
