@@ -5,7 +5,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ ./modules ./hiddify ];
+  imports = [ ./modules ./hiddify ./scripts ];
   programs = { zsh = { enable = true; }; };
   xdg = { portal = { enable = true; }; };
   environment = { variables = { EDITOR = "nvim"; }; };

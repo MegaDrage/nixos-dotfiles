@@ -6,7 +6,7 @@
         font-family: JetBrainsMono Nerd Font Mono;
     }
     window#waybar {
-        background: #16191C;
+        background-color: transparent;
         color: #AAB2BF;
     } 
   '';
