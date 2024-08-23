@@ -18,7 +18,7 @@
         folders = {
           "GTD" = {
             path = "$HOME/Documents/GTD/";
-            devices = [ "device1" "device2" ];
+            devices = [ "device1" ];
             versioning = {
               type = "simple";
               params = { keep = "3"; };
