@@ -1,10 +1,10 @@
-{ config, ... }: {
+{
   services = {
     syncthing = {
       enable = true;
       user = "megadrage";
       dataDir = "$HOME/Documents";
-      configDir = "${config.xdg.configHome}/syncthing";
+      configDir = "/home/megadrage/.config/syncthing";
       overrideDevices = true;
       overrideFolders = true;
       guiAddress = "0.0.0.0:8384";

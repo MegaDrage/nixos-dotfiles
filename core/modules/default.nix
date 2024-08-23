@@ -1,6 +1,7 @@
 {
   imports = [
     ./docker.nix
+    ./syncthing.nix
     ./polkit.nix
     ./user.nix
     ./boot.nix

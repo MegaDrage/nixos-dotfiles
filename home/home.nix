@@ -12,7 +12,6 @@
     ./lazygit
     ./bat.nix
     ./zoxide.nix
-    ./syncthing.nix
   ];
   home = {
     username = "megadrage";
