@@ -17,7 +17,7 @@
         };
         folders = {
           "GTD" = {
-            path = "$HOME/Documents/GTD/";
+            path = "/home/megadrage/Documents/GTD/";
             devices = [ "device1" ];
             versioning = {
               type = "simple";
