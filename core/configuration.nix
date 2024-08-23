@@ -6,14 +6,8 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
-    ./nvidia.nix
-    ./graphics.nix
-    ./fonts.nix
+    ./modules
     ./hiddify
-    ./docker.nix
-    ./shell.nix
-    ./syncthing.nix
   ];
   programs = { zsh = { enable = true; }; };
   xdg = { portal = { enable = true; }; };
