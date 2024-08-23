@@ -1,6 +1,7 @@
 {
   imports = [
     ./docker.nix
+    ./polkit.nix
     ./user.nix
     ./boot.nix
     ./fonts.nix
