@@ -5,6 +5,7 @@
     ./zsh.nix
     ./eza.nix
     ./starship
+    ./ranger.nix
     ./git.nix
     ./xdg.nix
     ./kitty
