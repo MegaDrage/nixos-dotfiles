@@ -71,6 +71,8 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    brightnessctl
+    libnotify
     libreoffice
     djvulibre
     fontforge

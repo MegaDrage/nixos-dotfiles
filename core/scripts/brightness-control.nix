@@ -1,13 +1,13 @@
 { pkgs, ... }:
 let
   brightness-control = pkgs.writeShellApplication {
-    name = "rofi-launcher";
+    name = "brightness-control";
     text = ''
       # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
       # Script for Monitor backlights (if supported) using brightnessctl
 
       iDIR="$HOME/.config/swaync/icons"
-      notification_timeout=100
+      notification_timeout=500
       step=5 # INCREASE/DECREASE BY THIS VALUE
 
       # Get brightness
@@ -18,13 +18,13 @@ let
       # Get icons
       get_icon() {
           current=$(get_backlight)
-          if [ "$current" -le "20" ]; then
+          if [ "''${current}" -le "20" ]; then
               icon="$iDIR/brightness-20.png"
-          elif [ "$current" -le "40" ]; then
+          elif [ "''${current}" -le "40" ]; then
               icon="$iDIR/brightness-40.png"
-          elif [ "$current" -le "60" ]; then
+          elif [ "''${current}" -le "60" ]; then
               icon="$iDIR/brightness-60.png"
-          elif [ "$current" -le "80" ]; then
+          elif [ "''${current}" -le "80" ]; then
               icon="$iDIR/brightness-80.png"
           else
               icon="$iDIR/brightness-100.png"
@@ -33,7 +33,7 @@ let
 
       # Notify
       notify_user() {
-          notify-send -e -h string:x-canonical-private-synchronous:brightness_notif -h int:value:$current -u low -i "$icon" "Brightness : $current%"
+          notify-send -t "''${notification_timeout}" -e -h string:x-canonical-private-synchronous:brightness_notif -h int:value:"''${current}" -u low -i "''${icon}" "Brightness : ''${current}%"
       }
 
       # Change brightness
@@ -42,9 +42,9 @@ let
           current_brightness=$(get_backlight)
 
           # Calculate new brightness
-          if [[ "$1" == "+${step}%" ]]; then
+          if [[ "$1" == "+''${step}%" ]]; then
               new_brightness=$((current_brightness + step))
-          elif [[ "$1" == "${step}%-" ]]; then
+          elif [[ "$1" == "''${step}%-" ]]; then
               new_brightness=$((current_brightness - step))
           fi
 
@@ -55,9 +55,9 @@ let
               new_brightness=100
           fi
 
-          brightnessctl set "${new_brightness}%"
+          brightnessctl set "''${new_brightness}%"
           get_icon
-          current=$new_brightness
+          current=''${new_brightness}
           notify_user
       }
 
@@ -67,10 +67,10 @@ let
           get_backlight
           ;;
       "--inc")
-          change_backlight "+${step}%"
+          change_backlight "+''${step}%"
           ;;
       "--dec")
-          change_backlight "${step}%-"
+          change_backlight "''${step}%-"
           ;;
       *)
           get_backlight
