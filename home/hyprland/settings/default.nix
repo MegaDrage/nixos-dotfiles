@@ -95,6 +95,12 @@
 
     xwayland.force_zero_scaling = true;
     debug.disable_logs = false;
+    binde = [
+      # Laptop brigthness
+      ", xf86MonBrightnessDown, exec, brightness-control --dec"
+      ", xf86MonBrightnessUp, exec, brightness-control --inc"
+    ];
+
     bindm = [
       # Mouse movements
       "$mainMod, mouse:272, movewindow"
