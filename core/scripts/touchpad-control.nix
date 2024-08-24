@@ -21,7 +21,7 @@ let
 
       disable_touchpad() {
           printf "false" >"$STATUS_FILE"
-          notify-send "''${notification_timeout}" -u low -i "$notif" "Disabling touchpad"
+          notify-send -t "''${notification_timeout}" -u low -i "$notif" "Disabling touchpad"
           hyprctl keyword "$TOUCHPAD_ENABLED" "false" -r
       }
 
