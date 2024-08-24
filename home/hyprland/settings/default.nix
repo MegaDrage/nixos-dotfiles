@@ -157,18 +157,18 @@
       ", PRINT, exec, hyprshot -m output"
       # Screenshot a region
       "$mainMod SHIFT, PRINT, exec, hyprshot -m region"
-      ", xf86TouchpadOn, exec, $scriptsDir/TouchPad.sh #disable touchpad"
-      ", xf86TouchpadOff, exec, $scriptsDir/TouchPad.sh #enable touchpad"
+      ", xf86TouchpadOn, exec, touchpad-control #disable touchpad"
+      ", xf86TouchpadOff, exec, touchpad-control #enable touchpad"
     ];
     bindel = [
       # Sound 
-      ", xf86audioraisevolume, exec, $scriptsDir/Volume.sh --inc #volume up"
-      ", xf86audiolowervolume, exec, $scriptsDir/Volume.sh --dec #volume down"
+      ", xf86audioraisevolume, exec, volume-control --inc #volume up"
+      ", xf86audiolowervolume, exec, volume-control --dec #volume down"
     ];
 
     bindl = [
-      ", xf86AudioMicMute, exec, $scriptsDir/Volume.sh --toggle-mic #mute mic"
-      ", xf86audiomute, exec, $scriptsDir/Volume.sh --toggle"
+      ", xf86AudioMicMute, exec, volume-control --toggle-mic #mute mic"
+      ", xf86audiomute, exec, volume-control --toggle"
       ", xf86Sleep, exec, systemctl suspend  # sleep button"
     ];
   };
