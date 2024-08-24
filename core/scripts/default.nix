@@ -4,5 +4,6 @@
     ./rofi-launcher.nix
     ./brightness-control.nix
     ./volume-control.nix
+    ./sound-control.nix
   ];
 }
