@@ -18,6 +18,6 @@
     username = "megadrage";
     homeDirectory = "/home/megadrage";
     stateVersion = "24.05";
-    packages = with pkgs; [ obsidian ];
+    packages = with pkgs; [ obsidian hyprshot ];
   };
 }

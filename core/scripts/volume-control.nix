@@ -8,6 +8,7 @@ let
 
       iDIR="$HOME/.config/swaync/icons"
       sDIR="$HOME/.config/hypr/scripts"
+      notification_timeout=500
 
       # Get Volume
       get_volume() {
