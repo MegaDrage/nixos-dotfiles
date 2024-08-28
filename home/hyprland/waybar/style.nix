@@ -22,25 +22,92 @@ in {
     * {
         border: none;
         border-radius: 0;
-        font-family: JetBrainsMono Nerd Font Mono;
+        font-family: "JetBrainsMono Nerd Font,JetBrainsMono NF";
     }
+
     window#waybar {
         background-color: transparent;
-        color: ${palette.foreground};
+        color: ${palette.base07};
     } 
-          #workspaces {
-         background: ${palette.background};
-         color: ${palette.foreground};
-         margin: 3px 3px;
-         padding: 3px 2px;
-         border-radius: 15px;
-      }
-      #workspaces button {
-         background: ${palette.background};
-         color: ${palette.foreground};
-         border-radius: 15px;
-         padding: 0px 2px;
-         transition: all 0.3s ease-in-out;
-      }
+
+    #workspaces {
+        background: ${palette.base05};
+        color: ${palette.base07};
+        margin: 3px 3px;
+        padding: 3px 2px;
+        border-radius: 15px;
+    }
+
+    #workspaces button {
+        background: ${palette.base05};
+        color: ${palette.base07};
+        border-radius: 15px;
+        padding: 0px 2px;
+        transition: all 0.3s ease-in-out;
+    }
+    #workspaces button.active {
+        background-color: ${palette.base09};
+        color: ${palette.base07};
+        border-radius: 15px;
+        min-width: 50px;
+        background-size: 400% 400%;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #workspaces button:hover {
+        background-color: ${palette.base0B};
+        color: ${palette.base07};
+        border-radius: 10px;
+        min-width: 50px;
+        background-size: 400% 400%;
+    }
+
+    #workspaces button.urgent {
+        background-color: ${palette.base08};
+        color: ${palette.base05};
+        border-radius: 15px;
+    }
+
+    #custom-startmenu {
+        background: ${palette.base05};
+        color: ${palette.base07};
+        font-size: 24px;
+        margin-left: 4px;
+        padding-left: 4px;
+        padding-right: 10px;
+        border-radius: 0% 60% 0% 0%;
+    }
+
+    #custom-exit {
+        background: ${palette.base05};
+        color: ${palette.base07};
+        margin: 3px 3px;
+        padding: 3px 2px;
+        font-size: 24px;
+        margin-right: 8px;
+        margin-left: 4px;
+        border-radius: 60% 0% 0% 0%;
+    }
+    #clock {
+        background: ${palette.base05};
+        color: ${palette.base07};
+        margin: 3px 3px;
+        padding: 3px 2px;        
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 15px;
+        font-size: 14px;
+        margin-right: 4px;
+    } 
+
+    #mode, #window, #pulseaudio, #network, #battery {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    #tray {
+        padding-right: 4px;
+        padding-left: 10px;
+    }
   '';
 }

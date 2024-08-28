@@ -1,4 +1,6 @@
-{
+{ pkgs, ... }:
+let calendar = "${pkgs.gnome-calendar}/bin/gnome-calendar";
+in {
   imports = [ ./style.nix ];
   programs.waybar = {
     enable = true;
@@ -11,7 +13,7 @@
         modules-right = [ "network" "pulseaudio" "battery" ];
 
         "network" = {
-          format-wifi = "  {signalStrength}%";
+          format-wifi = "  {signalStrength}%|";
           format-ethernet = "󰈀 100% ";
           tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
           format-linked = "{ifname} (No IP)";
@@ -28,32 +30,28 @@
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          # format = if clock24h == true then '' {:L%H:%M}'' else '' {:L%I:%M %p}'';
-          format = " {:L%H:%M}";
-          tooltip = true;
+          format = " {:%a, %d %b, %I:%M %p}";
+          on-click = "${calendar}";
           tooltip-format = ''
             <big>{:%A, %d.%B %Y }</big>
             <tt><small>{calendar}</small></tt>'';
-        };
-        "memory" = {
-          interval = 5;
-          format = " {}%";
-          tooltip = true;
-        };
-        "cpu" = {
-          interval = 5;
-          format = " {usage:2}%";
-          tooltip = true;
-        };
-        "disk" = {
-          format = " {free}";
-          tooltip = true;
+          calendar = {
+            mode = "month";
+            weeks-pos = "right";
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
         };
 
         "pulseaudio" = {
-          format = "{icon} {volume}% {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
+          format = "{icon} {volume}% {format_source}|";
+          format-bluetooth = "{volume}% {icon} {format_source}|";
+          format-bluetooth-muted = " {icon} {format_source}|";
           format-muted = " {format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
@@ -68,38 +66,11 @@
           };
           on-click = "sleep 0.1 && pavucontrol";
         };
-        "custom/exit" = {
-          tooltip = false;
-          format = "";
-          on-click = "sleep 0.1 && wlogout";
-        };
         "custom/startmenu" = {
-          tooltip = true;
           format = "";
           on-click = "sleep 0.1 && rofi-launcher";
         };
 
-        "custom/notification" = {
-          tooltip = false;
-          format = "{icon} {}";
-          format-icons = {
-            notification = "<span foreground='red'><sup></sup></span>";
-            none = "";
-            dnd-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-none = "";
-            inhibited-notification =
-              "<span foreground='red'><sup></sup></span>";
-            inhibited-none = "";
-            dnd-inhibited-notification =
-              "<span foreground='red'><sup></sup></span>";
-            dnd-inhibited-none = "";
-          };
-          return-type = "json";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "sleep 0.1 && task-waybar";
-          escape = true;
-        };
         "battery" = {
           states = {
             warning = 30;
@@ -117,7 +88,7 @@
         layer = "bottom";
         position = "bottom";
         modules-left = [ "hyprland/window" ];
-        modules-right = [ "tray" ];
+        modules-right = [ "tray" "memory" "cpu" "custom/exit" ];
 
         "hyprland/window" = {
           max-length = 22;
@@ -125,6 +96,25 @@
           rewrite = { "" = ""; };
         };
         "tray" = { spacing = 12; };
+        "custom/exit" = {
+          tooltip = false;
+          format = "";
+          on-click = "sleep 0.1 && wlogout";
+        };
+        "memory" = {
+          interval = 5;
+          format = " {}%";
+          tooltip = true;
+        };
+        "cpu" = {
+          interval = 5;
+          format = " {usage:2}%";
+          tooltip = true;
+        };
+        "disk" = {
+          format = " {free}";
+          tooltip = true;
+        };
       };
     };
   };
