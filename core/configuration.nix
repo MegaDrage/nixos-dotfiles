@@ -71,6 +71,7 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    vesktop
     pamixer
     brightnessctl
     libnotify
