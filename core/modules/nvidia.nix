@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Fix glitch
@@ -22,11 +22,11 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-  	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
 
     # Nvidia Optimus PRIME. It is a technology developed by Nvidia to optimize
     # the power consumption and performance of laptops equipped with their GPUs.
@@ -34,12 +34,12 @@
     # usually from Intel, for lightweight tasks to save power,
     # and the discrete Nvidia GPU for performance-intensive tasks.
     prime = {
-  		offload = {
-  			enable = true;
-  			enableOffloadCmd = true;
-  		};
-  		nvidiaBusId = "PCI:1:0:0";
-  		amdgpuBusId = "PCI:5:0:0";
-  	};
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:5:0:0";
+    };
   };
 }
