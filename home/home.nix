@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./sources
     ./zsh.nix
     ./eza.nix
     ./starship
