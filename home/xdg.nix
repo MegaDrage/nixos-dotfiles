@@ -8,8 +8,8 @@
       };
     };
     mimeApps = {
-      enable = true;
-      defaultApplications = { "application/pdf" = "okular.desktop"; };
+      # enable = true;
+      # defaultApplications = { "application/pdf" = "okular.desktop"; };
     };
   };
 }

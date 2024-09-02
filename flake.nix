@@ -10,9 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:megadrage/nixvim-conf";
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { stylix, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -25,6 +26,7 @@
         nixos = lib.nixosSystem {
           inherit system;
           modules = [
+            stylix.nixosModules.stylix
             ./core/configuration.nix
             home-manager.nixosModules.home-manager
             {
