@@ -1,8 +1,6 @@
 { pkgs, ... }: {
   boot = {
-    kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
     kernelPackages = pkgs.linuxPackages_latest;
-    extraModprobeConfig = "options nouveau modeset=0";
     supportedFilesystems = [ "ntfs" ];
     loader = {
       efi = {
