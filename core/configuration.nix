@@ -7,7 +7,16 @@
 {
   imports = [ ./modules ./hiddify ./scripts ];
   programs = { zsh = { enable = true; }; };
-  xdg = { portal = { enable = true; }; };
+  xdg = {
+    portal = {
+      xdgOpenUsePortal = true;
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+      ];
+    };
+  };
   environment = { variables = { EDITOR = "nvim"; }; };
   nix = {
     package = pkgs.nixFlakes;
