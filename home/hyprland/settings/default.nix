@@ -58,7 +58,7 @@
       shadow_range = 100;
       shadow_render_power = 2;
       shadow_scale = 0.97;
-      "col.shadow" = "rgba(00000055)";
+      # "col.shadow" = "rgba(00000055)";
     };
     animations = {
       enabled = true;

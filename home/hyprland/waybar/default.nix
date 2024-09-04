@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let calendar = "${pkgs.gnome-calendar}/bin/gnome-calendar";
 in {
-  imports = [ ./style.nix ];
+  # imports = [ ./style.nix ];
   programs.waybar = {
     enable = true;
     settings = {
