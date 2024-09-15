@@ -32,6 +32,10 @@
       # usually from Intel, for lightweight tasks to save power,
       # and the discrete Nvidia GPU for performance-intensive tasks.
       prime = {
+		offload = {
+			enable = true;
+			enableOffloadCmd = true;
+		};
         nvidiaBusId = "PCI:1:0:0";
         amdgpuBusId = lib.mkDefault "PCI:5:0:0";
       };

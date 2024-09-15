@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./fzf.nix
     ./sources
     ./zsh.nix
     ./eza.nix
