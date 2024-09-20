@@ -1,5 +1,6 @@
 {
   imports = [
+    ./vbox.nix
     ./stylix.nix
     ./hyprland.nix
     ./docker.nix
