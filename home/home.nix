@@ -21,6 +21,6 @@
     username = "megadrage";
     homeDirectory = "/home/megadrage";
     stateVersion = "24.05";
-    packages = with pkgs; [ obsidian hyprshot okular vesktop ];
+    packages = with pkgs; [ rocketchat-desktop google-chrome obsidian hyprshot okular vesktop ];
   };
 }

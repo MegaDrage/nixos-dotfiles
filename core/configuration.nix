@@ -17,6 +17,7 @@
       # ];
     };
   };
+  services.flatpak.enable = true;
   environment = { variables = { EDITOR = "nvim"; }; };
   nix = {
     package = pkgs.nixFlakes;
@@ -80,6 +81,7 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    devenv
     vesktop
     pamixer
     brightnessctl

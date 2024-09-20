@@ -4,6 +4,7 @@
   users.users.megadrage = {
     isNormalUser = true;
     extraGroups = [
+      "vboxusers"
       "wheel"
       "docker"
       "video"
