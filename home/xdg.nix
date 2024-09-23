@@ -8,7 +8,7 @@
       };
     };
     mimeApps = {
-      # enable = true;
+      enable = true;
       # defaultApplications = { "application/pdf" = "okular.desktop"; };
     };
   };

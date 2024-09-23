@@ -81,6 +81,7 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    vlc
     devenv
     vesktop
     pamixer
