@@ -20,7 +20,6 @@
   services.flatpak.enable = true;
   environment = { variables = { EDITOR = "nvim"; }; };
   nix = {
-    package = pkgs.nixFlakes;
     extraOptions = "experimental-features = nix-command flakes";
   };
 
@@ -96,7 +95,6 @@
     odt2txt
     mediainfo
     jq
-    calibre
     w3m
     atool
     kitty-themes
