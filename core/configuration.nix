@@ -17,11 +17,8 @@
       # ];
     };
   };
-  services.flatpak.enable = true;
   environment = { variables = { EDITOR = "nvim"; }; };
-  nix = {
-    extraOptions = "experimental-features = nix-command flakes";
-  };
+  nix = { extraOptions = "experimental-features = nix-command flakes"; };
 
   networking = {
     hostName = "nixos";
@@ -50,6 +47,8 @@
   nixpkgs.config.allowUnfree = true;
 
   services = {
+    libinput.enable = true;
+    flatpak.enable = true;
     xserver = {
       enable = true;
       xkb.layout = "us,ru";
@@ -74,12 +73,10 @@
   # services.pipewire = {
   #   enable = true;
   #   pulse.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  # }; 
 
   environment.systemPackages = with pkgs; [
+    clipse
     vlc
     devenv
     vesktop
