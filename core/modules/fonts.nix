@@ -1,12 +1,13 @@
 { pkgs, ... }: {
   fonts = {
     packages = with pkgs; [
+      # nerd-fonts.jetbrains-mono
       jetbrains-mono
-      iosevka
-      fira-code
-      source-code-pro
+      nerd-fonts.iosevka
+      nerd-fonts.fira-code
       corefonts
       vistafonts
     ];
+    fontDir.enable = true;
   };
 }

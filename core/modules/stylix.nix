@@ -8,10 +8,6 @@
         package = pkgs.jetbrains-mono;
         name = "JetBrains Mono";
       };
-      # monospace = {
-      # package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-      # name = "JetBrainsMono Nerd Font Mono";
-      # };
       sansSerif = {
         package = pkgs.dejavu_fonts;
         name = "DejaVu Sans";
@@ -21,10 +17,10 @@
         name = "DejaVu Serif";
       };
       sizes = {
-        applications = 12;
+        applications = 14;
         terminal = 14;
-        desktop = 10;
-        popups = 10;
+        desktop = 12;
+        popups = 12;
       };
     };
   };

@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let calendar = "${pkgs.gnome-calendar}/bin/gnome-calendar";
 in {
-  # imports = [ ./style.nix ];
   programs.waybar = {
     enable = true;
     settings = {
@@ -30,7 +29,7 @@ in {
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          format = " {:%a, %d %b, %I:%M %p}";
+          format = "{:%a, %d %b, %I:%M %p}";
           on-click = "${calendar}";
           tooltip-format = ''
             <big>{:%A, %d.%B %Y }</big>

@@ -2,6 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     monitor = [ ",preferred,auto,1" ];
     windowrule = [ "float, pavucontrol" ];
+    windowrulev2 = [ "float, class:(clipse)" "size 680 680, class:(clipse)"];
     env = [
       "NIXOS_OZONE_WL, 1"
       "NIXPKGS_ALLOW_UNFREE, 1"
@@ -18,11 +19,12 @@
     ];
 
     exec-once = [
+      "clipse -listen &"
       "polkit-agent-helper-1 &"
       "systemctl start --user polkit-gnome-authentication-agent-1 &"
       "killall -q waybar;sleep .5 && waybar &"
       "killall -q swaync;sleep .5 && swaync &"
-      #"hypridle &"
+      "hypridle &"
       # "nm-applet --indicator"
     ];
 
@@ -52,12 +54,12 @@
         popups_ignorealpha = 0.2;
       };
 
-      drop_shadow = true;
-      shadow_ignore_window = true;
-      shadow_offset = "0 15";
-      shadow_range = 100;
-      shadow_render_power = 2;
-      shadow_scale = 0.97;
+      # drop_shadow = true;
+      # shadow_ignore_window = true;
+      # shadow_offset = "0 15";
+      # shadow_range = 100;
+      # shadow_render_power = 2;
+      # shadow_scale = 0.97;
       # "col.shadow" = "rgba(00000055)";
     };
     animations = {
@@ -74,7 +76,7 @@
       kb_layout = "us,ru";
       touchpad = { natural_scroll = true; };
       follow_mouse = 1;
-      kb_options = "grp:alt_shift_toggle";
+      kb_options = "grp:win_space_toggle";
     };
     dwindle = {
       pseudotile = true;
@@ -109,6 +111,7 @@
     ];
     bind = [
       # "$mainMod SHIFT, L, exec, hyprlock"
+      "$mainMod, V, exec, kitty --class clipse -e 'clipse'"
       "$mainMod, Q, killactive,"
       "$mainMod, Return, exec, kitty"
       "$mainMod, B, exec, floorp"

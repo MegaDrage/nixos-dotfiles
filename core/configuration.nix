@@ -11,10 +11,6 @@
     portal = {
       xdgOpenUsePortal = true;
       enable = true;
-      # extraPortals = with pkgs; [
-      #   xdg-desktop-portal-gtk
-      #   xdg-desktop-portal-hyprland
-      # ];
     };
   };
   environment = { variables = { EDITOR = "nvim"; }; };
@@ -76,6 +72,7 @@
   # }; 
 
   environment.systemPackages = with pkgs; [
+    brave
     clipse
     vlc
     devenv
@@ -103,7 +100,7 @@
     wl-clipboard
     fd
     inputs.nixvim.packages.${system}.default
-    bottles
+    dbeaver-bin
   ];
 
   programs.direnv = {
@@ -145,6 +142,12 @@
       true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
+  networking.hosts = {
+    # "217.114.4.78" = [ "nginx.local" "dev.myapp.local" "prod.myapp.local" ];
+    # "217.114.4.78" = [ "chart-example.local" ];
+    # "127.0.0.1" = [ "foo.bar.baz" ];
+    # "192.168.0.2" = [ "fileserver.local" "nameserver.local" ];
+  };
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
