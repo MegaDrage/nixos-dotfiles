@@ -16,6 +16,8 @@
     ./bat.nix
     ./zoxide.nix
     ./hyprland
+    ./gtk.nix
+    ./qt.nix
   ];
   home = {
     username = "megadrage";
