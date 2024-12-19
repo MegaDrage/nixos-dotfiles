@@ -1,0 +1,3 @@
+{
+    pgadmin.enable = true;
+}
