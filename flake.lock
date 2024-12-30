@@ -470,11 +470,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1735522729,
-        "narHash": "sha256-v61ZHgi2nOpOcFGTMdXAP/QXeyzamfWJoXV6gPgAZyY=",
+        "lastModified": 1735566481,
+        "narHash": "sha256-GtjRxRKDQDKinFzTT2WgNdCpmorxICRnen6iLDXMlXw=",
         "owner": "megadrage",
         "repo": "nixvim-conf",
-        "rev": "6a47a261ca48a2b1f11697f97e8597622b2c223a",
+        "rev": "bff1f5a5e2927c8b6c736e244f0c6099aaf8a5da",
         "type": "github"
       },
       "original": {
