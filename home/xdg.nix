@@ -7,9 +7,9 @@
         XDG_DEVELOPMENT_DIR = "${config.home.homeDirectory}/Development";
       };
     };
-    mimeApps = {
-      enable = true;
+    # mimeApps = {
+    #   enable = true;
       # defaultApplications = { "application/pdf" = "okular.desktop"; };
-    };
+    # };
   };
 }

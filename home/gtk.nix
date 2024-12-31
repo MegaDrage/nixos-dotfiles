@@ -5,9 +5,9 @@
       package = pkgs.adwaita-icon-theme;
       name = "Adwaita";
     };
-    theme = {
-      package = pkgs.gnome.gnome-themes-extra;
-      name = "Adwaita";
-    };
+    # theme = {
+    #   package = pkgs.gnome-themes-extra;
+    #   name = "Adwaita";
+    # };
   };
 }
