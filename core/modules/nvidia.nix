@@ -6,10 +6,13 @@
     amdgpu.initrd.enable = false;
     nvidia = {
       # Fix glitch
-      #nvidiaPersistenced = true;
+      nvidiaPersistenced = lib.mkDefault false;
       # Modesetting is required.
       modesetting.enable = lib.mkDefault true;
-      powerManagement = { enable = lib.mkDefault true; };
+      powerManagement = {
+        enable = lib.mkDefault false;
+        finegrained = lib.mkDefault false;
+      };
       # Use the NVidia open source kernel module (not to be confused with the
       # independent third-party "nouveau" open source driver).
       # Support is limited to the Turing and later architectures. Full list of
@@ -24,7 +27,7 @@
       nvidiaSettings = lib.mkDefault true;
 
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
 
       # Nvidia Optimus PRIME. It is a technology developed by Nvidia to optimize
       # the power consumption and performance of laptops equipped with their GPUs.
@@ -32,10 +35,10 @@
       # usually from Intel, for lightweight tasks to save power,
       # and the discrete Nvidia GPU for performance-intensive tasks.
       prime = {
-		offload = {
-			enable = true;
-			enableOffloadCmd = true;
-		};
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
         nvidiaBusId = "PCI:1:0:0";
         amdgpuBusId = lib.mkDefault "PCI:5:0:0";
       };
