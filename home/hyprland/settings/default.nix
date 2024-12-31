@@ -25,7 +25,7 @@
       "killall -q waybar;sleep .5 && waybar &"
       "killall -q swaync;sleep .5 && swaync &"
       "hypridle &"
-      # "nm-applet --indicator"
+      "nm-applet --indicator"
     ];
 
     general = {
@@ -110,9 +110,10 @@
       "$mainMod ALT, mouse:272, resizewindow"
     ];
     bind = [
-      # "$mainMod SHIFT, L, exec, hyprlock"
+      "$mainMod SHIFT, L, exec, hyprlock"
       "$mainMod, V, exec, kitty --class clipse -e 'clipse'"
       "$mainMod, Q, killactive,"
+      "$mainMod SHIFT, Q, exit,"
       "$mainMod, Return, exec, kitty"
       "$mainMod, B, exec, floorp"
       # Window control
@@ -130,6 +131,7 @@
       "$mainMod ALT, up, moveactive, 0 -80"
       "$mainMod ALT, down, moveactive, 0 80"
       # Workspace control
+      "$mainMod, F, fullscreen"
       "$mainMod SHIFT,F,togglefloating"
       "$mainMod,1,workspace,1"
       "$mainMod,2,workspace,2"
@@ -165,14 +167,14 @@
     ];
     bindel = [
       # Sound 
-      ", xf86audioraisevolume, exec, volume-control --inc #volume up"
-      ", xf86audiolowervolume, exec, volume-control --dec #volume down"
+      ", xf86AudioRaiseVolume, exec, volume-control --inc #volume up"
+      ", xf86AudioLowerVolume, exec, volume-control --dec #volume down"
     ];
 
     bindl = [
       ", xf86AudioMicMute, exec, volume-control --toggle-mic #mute mic"
-      ", xf86audiomute, exec, volume-control --toggle"
-      ", xf86Sleep, exec, systemctl suspend  # sleep button"
+      ", xf86AudioMute, exec, volume-control --toggle"
+      # ", xf86Sleep, exec, systemctl suspend  # sleep button"
     ];
   };
 }
