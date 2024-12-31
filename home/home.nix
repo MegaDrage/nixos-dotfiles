@@ -23,6 +23,19 @@
     username = "megadrage";
     homeDirectory = "/home/megadrage";
     stateVersion = "24.05";
-    packages = with pkgs; [ rocketchat-desktop vivaldi obsidian hyprshot okular vesktop ];
+    packages = with pkgs; [
+      foot
+      qbittorrent
+      warp-terminal
+      hiddify-app
+      pavucontrol
+      remmina
+      rocketchat-desktop
+      vivaldi
+      obsidian
+      hyprshot
+      okular
+      vesktop
+    ];
   };
 }
