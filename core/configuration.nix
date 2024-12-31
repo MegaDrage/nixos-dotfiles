@@ -5,7 +5,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ ./modules ./hiddify ./scripts ];
+  imports = [ ./modules ./scripts ];
   programs = { zsh = { enable = true; }; };
   xdg = {
     portal = {
@@ -100,7 +100,6 @@
     wl-clipboard
     fd
     inputs.nixvim.packages.${system}.default
-    dbeaver-bin
   ];
 
   programs.direnv = {
@@ -145,7 +144,7 @@
   networking.hosts = {
     # "217.114.4.78" = [ "nginx.local" "dev.myapp.local" "prod.myapp.local" ];
     # "217.114.4.78" = [ "chart-example.local" ];
-    # "127.0.0.1" = [ "foo.bar.baz" ];
+    "127.0.0.1" = [ "traefik.local" "prometheus.local" "grafana.local" "cadvisor.local" "alertmanager.local" ];
     # "192.168.0.2" = [ "fileserver.local" "nameserver.local" ];
   };
   # This option defines the first version of NixOS you have installed on this particular machine,
