@@ -625,11 +625,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736087128,
-        "narHash": "sha256-869zFhHapRgvzxaVscOpaPSfXBr7aTttfpdFYic3pAg=",
+        "lastModified": 1736091218,
+        "narHash": "sha256-4Gt4+YokrEjObz9t4dKrd1VLq8SoI+i9Uj6CruA+WX0=",
         "owner": "megadrage",
         "repo": "nixCats-vim",
-        "rev": "d813b4a2329f8fc38d08f8bc91ab2dca0805ce1a",
+        "rev": "09e384211c1cbace0c30ecd4affd94a7ff0f9cb9",
         "type": "github"
       },
       "original": {
