@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -19,11 +19,15 @@
     ./gtk.nix
     ./qt.nix
   ];
+
   home = {
     username = "megadrage";
     homeDirectory = "/home/megadrage";
     stateVersion = "24.05";
     packages = with pkgs; [
+      mission-center
+      cloudflare-warp
+      zathura
       foot
       qbittorrent
       warp-terminal
