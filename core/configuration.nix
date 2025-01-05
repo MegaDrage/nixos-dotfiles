@@ -2,17 +2,24 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [ ./modules ./scripts ];
   programs = { zsh = { enable = true; }; };
+  nixpkgs.config.allowUnfree = true;
+  nvim = {
+    enable = true;
+    packageNames = [ "nvim" ];
+  };  
+
   xdg = {
     portal = {
       xdgOpenUsePortal = true;
       enable = true;
     };
   };
+
   environment = { variables = { EDITOR = "nvim"; }; };
   nix = { extraOptions = "experimental-features = nix-command flakes"; };
 
@@ -40,11 +47,11 @@
       LC_TIME = "ru_RU.UTF-8";
     };
   };
-  nixpkgs.config.allowUnfree = true;
 
   services = {
     libinput.enable = true;
     flatpak.enable = true;
+    power-profiles-daemon.enable = true;
     xserver = {
       enable = true;
       xkb.layout = "us,ru";
@@ -57,22 +64,8 @@
       };
     };
     printing.enable = true;
-  };
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # }; 
-
+  }; 
   environment.systemPackages = with pkgs; [
-    brave
     clipse
     vlc
     devenv
@@ -96,10 +89,10 @@
     zip
     unzip
     ripgrep
+    lenovo-legion
     telegram-desktop
     wl-clipboard
     fd
-    inputs.nixvim.packages.${system}.default
   ];
 
   programs.direnv = {
@@ -111,19 +104,6 @@
     enable = true;
     binfmt = true;
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   #networking.firewall.allowedTCPPorts = [ 2017 443 ];
@@ -144,7 +124,7 @@
   networking.hosts = {
     # "217.114.4.78" = [ "nginx.local" "dev.myapp.local" "prod.myapp.local" ];
     # "217.114.4.78" = [ "chart-example.local" ];
-    "127.0.0.1" = [ "traefik.local" "prometheus.local" "grafana.local" "cadvisor.local" "alertmanager.local" ];
+    "127.0.0.1" = [ ];
     # "192.168.0.2" = [ "fileserver.local" "nameserver.local" ];
   };
   # This option defines the first version of NixOS you have installed on this particular machine,
@@ -166,10 +146,10 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.05"; # Did you read the comment?
   # Get running apps in file
-  environment.etc."current-system-packages".text = let
-    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-    sortedUnique =
-      builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
-    formatted = builtins.concatStringsSep "\n" sortedUnique;
-  in formatted;
+  # environment.etc."current-system-packages".text = let
+  #   packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+  #   sortedUnique =
+  #     builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
+  #   formatted = builtins.concatStringsSep "\n" sortedUnique;
+  # in formatted;
 }
