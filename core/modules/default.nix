@@ -1,5 +1,6 @@
 {
   imports = [
+    ./logrotate.nix
     ./stylix.nix
     ./hyprland.nix
     ./docker.nix
