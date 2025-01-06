@@ -11,7 +11,7 @@
   nvim = {
     enable = true;
     packageNames = [ "nvim" ];
-  };  
+  };
 
   xdg = {
     portal = {
