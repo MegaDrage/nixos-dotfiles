@@ -1,46 +1,42 @@
-{ config, lib, ... }:
-
-{
+{ lib, config, ... }: {
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware = {
-    amdgpu.initrd.enable = false;
-    nvidia = {
-      # Fix glitch
-      nvidiaPersistenced = lib.mkDefault false;
-      # Modesetting is required.
-      modesetting.enable = lib.mkDefault true;
-      powerManagement = {
-        enable = lib.mkDefault false;
-        finegrained = lib.mkDefault false;
-      };
-      # Use the NVidia open source kernel module (not to be confused with the
-      # independent third-party "nouveau" open source driver).
-      # Support is limited to the Turing and later architectures. Full list of
-      # supported GPUs is at:
-      # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-      # Only available from driver 515.43.04+
-      # Currently alpha-quality/buggy, so false is currently the recommended setting.
-      open = lib.mkDefault false;
+  environment = {
+    variables = {
+      LIBVA_DRIVER_NAME = "nvidia";
+      XDG_SESSION_TYPE = "wayland";
+      GBM_BACKEND = "nvidia-drm";
+      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      __GL_GSYNC_ALLOWED = "1";
+      __GL_VRR_ALLOWED = "0";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+    };
+  };
 
-      # Enable the Nvidia settings menu,
-      # accessible via `nvidia-settings`.
+  hardware = {
+
+    # amdgpu.initrd.enable = false;
+
+    nvidia = {
+      nvidiaPersistenced = lib.mkDefault true;
+      modesetting.enable = lib.mkDefault true;
+
       nvidiaSettings = lib.mkDefault true;
 
-      # Optionally, you may need to select the appropriate driver version for your specific GPU.
+      powerManagement.enable = lib.mkDefault true;
+
+      open = false;
+
       package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-      # Nvidia Optimus PRIME. It is a technology developed by Nvidia to optimize
-      # the power consumption and performance of laptops equipped with their GPUs.
-      # It seamlessly switches between the integrated graphics,
-      # usually from Intel, for lightweight tasks to save power,
-      # and the discrete Nvidia GPU for performance-intensive tasks.
       prime = {
         offload = {
           enable = true;
           enableOffloadCmd = true;
         };
-        nvidiaBusId = "PCI:1:0:0";
         amdgpuBusId = lib.mkDefault "PCI:5:0:0";
+        nvidiaBusId = "PCI:1:0:0";
       };
     };
   };
