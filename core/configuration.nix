@@ -66,6 +66,9 @@
     printing.enable = true;
   }; 
   environment.systemPackages = with pkgs; [
+    w3m
+    firefox
+    browsh
     clipse
     vlc
     devenv
@@ -95,6 +98,12 @@
     fd
   ];
 
+  documentation = {
+    enable = true;
+    man.enable = true;
+    dev.enable = true;
+    doc.enable = true;
+  };
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
