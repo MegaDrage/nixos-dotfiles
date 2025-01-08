@@ -400,11 +400,11 @@
         "plugins-w3m-vim": "plugins-w3m-vim"
       },
       "locked": {
-        "lastModified": 1736341321,
-        "narHash": "sha256-kps12uDFMYsX1QcZChOMa63RekoRF+8noyqE0tUZRYE=",
+        "lastModified": 1736348981,
+        "narHash": "sha256-YPqrtU1eO8R+2ZOuMY4dovgnjz6Q8Sjl7i7JHuPl5BM=",
         "owner": "megadrage",
         "repo": "nixCats-vim",
-        "rev": "cfa7799141c2eaec842f697bc93c44ce2b9a5c78",
+        "rev": "f7aa6085b9a1026bacc10ddd448bc9cf659dfc5a",
         "type": "github"
       },
       "original": {
