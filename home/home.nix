@@ -1,7 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
+    ./fastfetch.nix
+    ./tmux.nix
     ./fzf.nix
     ./sources
     ./zsh.nix
@@ -18,6 +20,8 @@
     ./hyprland
     ./gtk.nix
     ./qt.nix
+    ./dconf.nix
+    ./books
   ];
 
   home = {
@@ -27,13 +31,9 @@
     packages = with pkgs; [
       mission-center
       cloudflare-warp
-      zathura
-      foot
       qbittorrent
-      warp-terminal
       hiddify-app
       pavucontrol
-      remmina
       rocketchat-desktop
       vivaldi
       obsidian
@@ -41,5 +41,17 @@
       okular
       vesktop
     ];
+  };
+
+  shellAliases = {
+    l =
+      "eza -bgf --header --git --color=always --group-directories-first --icons always";
+    llm =
+      "eza -lbgd --header --git --sort=modified --color=always --group-directories-first --icons always";
+    lS = "eza -1 --color=always --group-directories-first --icons always";
+    lt =
+      "eza --tree --level=3 --color=always --group-directories-first --icons always";
+    ldot = "eza -a | grep -E '^.'";
+    vim = "nvim";
   };
 }
