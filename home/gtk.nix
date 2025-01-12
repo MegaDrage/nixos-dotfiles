@@ -1,13 +1,18 @@
 { pkgs, ... }: {
   gtk = {
     enable = true;
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
+    cursorTheme = {
+      package = pkgs.phinger-cursors;
+      name = "phinger-cursors-dark";
+      size = 14;
     };
-    # theme = {
-    #   package = pkgs.gnome-themes-extra;
-    #   name = "Adwaita";
-    # };
+    iconTheme = {
+      package = pkgs.tela-icon-theme;
+      name = "Tela";
+    };
+    theme = {
+        package = pkgs.nightfox-gtk-theme;
+        name = "Nightfox-Dark";
+    };
   };
 }
