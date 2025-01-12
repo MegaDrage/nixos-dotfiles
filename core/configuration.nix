@@ -17,6 +17,11 @@
     portal = {
       xdgOpenUsePortal = true;
       enable = true;
+      wlr.enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-kde
+        xdg-desktop-portal-gtk
+      ];
     };
   };
 
@@ -30,7 +35,6 @@
 
   time = {
     timeZone = "Asia/Novosibirsk";
-    hardwareClockInLocalTime = true;
   };
 
   i18n = {
@@ -64,7 +68,7 @@
       };
     };
     printing.enable = true;
-  }; 
+  };
   environment.systemPackages = with pkgs; [
     w3m
     firefox
@@ -88,7 +92,6 @@
     w3m
     atool
     kitty-themes
-    fastfetch
     zip
     unzip
     ripgrep
@@ -96,6 +99,7 @@
     telegram-desktop
     wl-clipboard
     fd
+    gnome-tweaks
   ];
 
   documentation = {
