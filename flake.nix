@@ -11,11 +11,13 @@
     };
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixvim.url = "github:megadrage/nixvim-conf";
-    nvim-config = { url = "github:megadrage/nixCats-vim"; inputs.nixpkgs.follows = "nixpkgs-stable"; }; 
-    stylix.url = "github:danth/stylix";
+    nvim-config = {
+      url = "github:megadrage/nixCats-vim";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
-  outputs = { stylix, nixpkgs, nixpkgs-stable, home-manager, nvim-config, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-stable, home-manager, nvim-config, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -28,11 +30,13 @@
         nixos = lib.nixosSystem {
           inherit system;
           specialArgs = {
-	    pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
-	  };
+            pkgs-stable = import nixpkgs-stable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
           modules = [
             nvim-config.nixosModule
-            stylix.nixosModules.stylix
             ./core/configuration.nix
             home-manager.nixosModules.home-manager
             {
@@ -40,9 +44,12 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "$HOME/backup.hm";
-		extraSpecialArgs = {
-                 pkgs-stable = import nixpkgs-stable { inherit system; config.allowUnfree = true; };
-		};
+                extraSpecialArgs = {
+                  pkgs-stable = import nixpkgs-stable {
+                    inherit system;
+                    config.allowUnfree = true;
+                  };
+                };
                 users.megadrage = { imports = [ ./home/home.nix ]; };
               };
             }
