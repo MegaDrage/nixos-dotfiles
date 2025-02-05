@@ -10,7 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixvim.url = "github:megadrage/nixvim-conf";
     nvim-config = {
       url = "github:megadrage/nixCats-vim";
       inputs.nixpkgs.follows = "nixpkgs-stable";
