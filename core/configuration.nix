@@ -19,7 +19,9 @@
       enable = true;
       wlr.enable = true;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-kde
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal
         xdg-desktop-portal-gtk
       ];
     };
@@ -33,9 +35,7 @@
     networkmanager.enable = true;
   };
 
-  time = {
-    timeZone = "Asia/Novosibirsk";
-  };
+  time = { timeZone = "Asia/Novosibirsk"; };
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -157,7 +157,7 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
   # Get running apps in file
   # environment.etc."current-system-packages".text = let
   #   packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
