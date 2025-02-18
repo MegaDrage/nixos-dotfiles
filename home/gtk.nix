@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-stable, ... }: {
   gtk = {
     enable = true;
     cursorTheme = {
@@ -7,7 +7,7 @@
       size = 14;
     };
     iconTheme = {
-      package = pkgs.tela-icon-theme;
+      package = pkgs-stable.tela-icon-theme;
       name = "Tela";
     };
     theme = {

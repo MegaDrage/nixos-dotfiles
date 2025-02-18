@@ -2,7 +2,7 @@
   dconf = {
     settings = {
       "org/gnome/desktop/interface" = {
-        monospace-font-name = "JetBrainsMonoNL Nerd Font Mono 14";
+        monospace-font-name = "JetBrainsMono Nerd Font Mono 14";
         font-name = "Inter Medium 11";
         document-font-name = "Inter 11";
         text-scaling-factor = 1.1;
