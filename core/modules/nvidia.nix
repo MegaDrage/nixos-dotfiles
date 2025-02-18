@@ -12,7 +12,7 @@
 
       powerManagement = {enable = lib.mkDefault true; finegrained = true;};
 
-      open = false;
+      open = true;
 
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       dynamicBoost.enable = true;

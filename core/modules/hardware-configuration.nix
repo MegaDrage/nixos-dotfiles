@@ -13,19 +13,19 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/d4cb2a2d-d67a-4fed-a28e-7730efa55dbe";
+    device = "/dev/disk/by-uuid/450013ec-dc47-4c41-8644-586f94417945";
     fsType = "btrfs";
     options = [ "subvol=root" "compress=zstd" ];
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/d4cb2a2d-d67a-4fed-a28e-7730efa55dbe";
+    device = "/dev/disk/by-uuid/450013ec-dc47-4c41-8644-586f94417945";
     fsType = "btrfs";
     options = [ "subvol=home" "compress=zstd" ];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/d4cb2a2d-d67a-4fed-a28e-7730efa55dbe";
+    device = "/dev/disk/by-uuid/450013ec-dc47-4c41-8644-586f94417945";
     fsType = "btrfs";
     options = [ "subvol=nix" "compress=zstd" "noatime" ];
   };
@@ -36,8 +36,8 @@
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/54e056f2-33c4-47f7-83f4-494a1310f2c2"; }];
+  #swapDevices =
+  #  [{ device = "/dev/disk/by-uuid/54e056f2-33c4-47f7-83f4-494a1310f2c2"; }];
 
   fileSystems."/ntfs" = {
     device = "/dev/disk/by-uuid/ACD4D404D4D3CF28";
